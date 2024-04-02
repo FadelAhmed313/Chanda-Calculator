@@ -1,0 +1,1110 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chanda Calculator</title>
+        <!-- Include Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"> <strong>Chanda Calculator</strong></a>
+            <button id="navbar" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Privacy">Privacy and Security</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#rate">%Rate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Setting" >AIMS</a>
+                    </li> 
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container mt-4">
+            <div id="home">
+                <h2></h2>
+                <!-- Your home page content and form here -->
+              
+            <form id="salaryForm">
+                <div class="form-group">
+                    <label for="fundType"><strong>Member Type:</strong></label>
+                    <select id="fundType" class="form-control">
+                        <option value="NonMusis">Non-Musis members</option>
+                        <option value="Musis">Musis members</option>                  
+                    </select>
+                </div>                    
+              <label for="fundType"><strong>Member Group:</strong></label>
+                      <div class="container">
+
+                        <div class="row">
+                            <div class="col">
+                                <label>
+                                    <input type="radio" name="group" id="radioKhuddam"> Khuddam
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    <input type="radio" name="group" id="radioLajna"> Lajna
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>
+                                    <input type="radio" name="group" id="radioAnsar"> Ansar
+                                </label>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    <input type="radio" name="group" id="radioStudent"> Student
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                    <label for="salary"><strong>Income:</strong> </label>
+                    <input type="number" id="salary" class="form-control" min="0" required>
+                </div>
+     <label for="CheckTehrik"><strong>Optional:</strong> </label>      
+<div class="row">
+    <div class="col">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="CheckTehrik">
+            <label class="form-check-label" for="CheckTehrik">
+            Tehrik-e-Jadid
+            </label>
+            <div class="form-group">
+                <input type="number" id="numberInputTehrik" class="Inputcontrol number-input" min="0" required>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="CheckWaqf">
+            <label class="form-check-label" for="flexCheckWaqf">
+            Waqf-e-Jadid
+            </label>
+            <div class="form-group">
+                <input type="number" id="numberInputwaqf" class="Inputcontrol number-input" min="0" required>
+            </div>
+        </div> 
+    </div>
+</div>
+
+         
+        <br> 
+                <button style="width: 100%;" type="button" id="btnCalc" onclick="calculate()" class="btn btn-warning">Calculate</button>
+            </form>
+                 <div id="dataSection">
+            <br/>
+            <p id="savedString"></p>
+            <p id="savedNumber"></p>
+            </div>
+              <table id="myTable" class="table mt-4">
+                <thead>
+                    <tr>
+                        <th>Funds</th>
+                        <th>Amount (Rs)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="aamString">Aam</td>
+                        <td id="aamValue"></td>
+                    </tr>
+                    <tr>
+                        <td>Jalsa</td>
+                        <td id="jalsaValue"></td>
+                    </tr>
+                    <tr>
+                        <td id="groupString">Khuddam</td>
+                        <td id="khuddamValue"></td>
+                    </tr>
+                    <tr>
+                        <td>Ijtema</td>
+                        <td id="ijtemaValue"></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold;">Total</td>
+                        <td style="font-weight: bold;" id="totalValue"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/><br/><br/>
+              
+            </div>
+            <div id="about">
+                <h2>About</h2>
+                <!-- Your about page content and form here -->
+                <div class="col-sm-12 col-md-12 py-4">
+                  <h4 class="text-white">About</h4>
+                  <p class="text-muted">The Chanda Calculator is a user-friendly web application designed by MKA Pailles to assist the Ahmadi community members in calculating their Chanda payments accurately. Whether you’re a Khuddam, Lajna, or part of the Wassiyat scheme, this tool simplifies the process and ensures transparency.
+                </div>
+            </div>
+
+            <div id="Privacy">
+                <div class="col-sm-12 col-md-12 py-4">
+                <h2>Privacy and Security</h2>
+                <!-- Your Privacy page content and form here -->
+                <h4 class="text-white">Privacy and Security</h4>
+                 <ul style="list-style-type:square; color:#6c757d;">
+                    <li><span style="color:#6c757d;">The Chanda Calculator operates entirely on your local web browser. No data is stored or transmitted to external servers.</span></li>
+                    <li><span style="color:#6c757d;">Your privacy is our priority. Once you close the browser, all entered information is automatically cleared.</span></li>
+                </ul>
+                </div>
+            </div>
+
+            <div id="rate">
+                <h2></h2>
+                <!-- Your home page content and form here -->
+
+                <h4>% Rate </h4>
+                <table class="table table-striped" style="margin-right: calc(1%); width: 99%;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 6.2232%;"><span style="font-size: 12px;">#</span></th>
+                <th scope="col" style="width: 6.6023%;"><span style="font-size: 12px;">%</span></th>
+                <th scope="col" style="width: 15.017%;"><span style="font-size: 12px;">Funds</span></th>
+                <th scope="col" style="width: 72.1042%;"><span style="font-size: 12px;">Example</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" style="width: 6.2232%;"><span style="font-size: 12px;">1</span></th>
+                <td style="width: 6.6023%;"><span style="font-size: 12px;">10%</span></td>
+                <td style="width: 15.017%;"><span style="font-size: 12px;">Chanda Wassiyat Khuddam, Lajna and Ansar</span></td>
+                <td style="width: 72.1042%;"><span style="font-size: 12px;">For a monthly salary of Rs10 000, Rs1000 should be paid <span style="color: rgb(226, 80, 65);">monthly</span></span></td>
+            </tr>
+            <tr>
+                <th scope="row" style="width: 6.2232%;"><span style="font-size: 12px;">2</span></th>
+                <td style="width: 6.6023%;"><span style="font-size: 12px;">6.25%<br></span></td>
+                <td style="width: 15.017%;"><span style="font-size: 12px;">Chanda Aam Khuddam, Lajna and Ansar<br></span></td>
+                <td style="width: 72.1042%;"><span style="font-size: 12px;">For a monthly salary of Rs10 000, Rs625 should be paid <span style="color: rgb(226, 80, 65);">monthly</span><br></span></td>
+            </tr>
+            <tr>
+                <th scope="row" style="width: 6.2232%;"><span style="font-size: 12px;">3</span></th>
+                <td style="width: 6.6023%;"><span style="font-size: 12px;">10%<br></span></td>
+                <td style="width: 15.017%;"><span style="font-size: 12px;">Chanda Jalsa Khuddam, Lajna and Ansar<br></span></td>
+                <td style="width: 72.1042%;"><span style="font-size: 12px;">For a monthly salary of Rs10 000, Rs1000 should be paid per <span style="color: rgb(44, 130, 201);">annum&nbsp;</span><strong>or&nbsp;</strong>Rs 83.33 per<strong>&nbsp;</strong><span style="color: rgb(226, 80, 65);">month</span><br></span></td>
+            </tr>
+            <tr>
+                <th scope="row" style="width: 6.2232%;"><span style="font-size: 12px;">4</span></th>
+                <td style="width: 6.6023%;"><span style="font-size: 12px;">1%<br></span></td>
+                <td style="width: 15.017%;"><span style="font-size: 12px;">Chanda Khuddam, Lajna and Ansar<br></span></td>
+                <td style="width: 72.1042%;"><span style="font-size: 12px;">For a monthly salary of Rs10 000, Rs100 should be paid&nbsp;<strong>&nbsp;</strong><span style="color: rgb(226, 80, 65);">monthly</span><br></span></td>
+            </tr>
+            <tr>
+                <th scope="row" style="width: 6.2232%;"><span style="font-size: 12px;">5</span></th>
+                <td style="width: 6.6023%;"><span style="font-size: 12px;">3%<br></span></td>
+                <td style="width: 15.017%;"><span style="font-size: 12px;">Chanda Ijtema Khuddam and Lajna<br></span></td>
+                <td style="width: 72.1042%;"><span style="font-size: 12px;">For a monthly salary of Rs10 000, Rs300 should be paid per <span style="color: rgb(44, 130, 201);">annum&nbsp;</span><strong>or&nbsp;</strong>Rs25 &nbsp;per<strong>&nbsp;</strong><span style="color: rgb(226, 80, 65);">month</span><br></span></td>
+            </tr>
+                      <tr>
+                <th scope="row" style="width: 6.2232%;"><span style="font-size: 12px;">6</span></th>
+                <td style="width: 6.6023%;"><span style="font-size: 12px;">0.08%<br></span></td>
+                <td style="width: 15.017%;"><span style="font-size: 12px;">Chanda Ijtema Ansar<br></span></td>
+                <td style="width: 72.1042%;"><span style="font-size: 12px;">For a monthly salary of Rs10 000, Rs108 should be paid per <span style="color: rgb(44, 130, 201);">annum&nbsp;</span><strong>or&nbsp;</strong>Rs9 &nbsp;per<strong>&nbsp;</strong><span style="color: rgb(226, 80, 65);">month</span><br></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <blockquote class="blockquote">
+        <p><span style="font-size:10px;"><i>Note : Students and non-working members are required to pay a monthly fee of&nbsp;</i></span><span style="background-color:#212121;color:rgb(250,197,28);font-size:10px;"><i>Rs 60 for Chanda Khuddam/Lajna</i></span><span style="font-size:10px;"><i> and </i></span><span style="background-color:#212121;color:rgb(250,197,28);font-size:10px;"><i>Rs 15 for Chanda Ijtama.</i></span></p>
+    </blockquote>
+    <p><br><br><br></p>
+            </div>
+
+            <div id="Setting">
+                <div class="col-sm-12 col-md-12 py-4">
+                <h2>AIMS</h2>
+                <!-- Your Setting page content and form here -->
+                <h4 class="text-white"></h4>
+                  <form name="myForm" id="myForm" action="javascript:saveData();">
+                     <!-- Dropdown menu for month -->
+                     <div class="form-group">
+                       <label for="month">Month:</label>
+                       <select class="form-control" id="month" name="month">
+                         <option value="January">January</option>
+                         <option value="February">February</option>
+                         <option value="March">March</option>
+                         <option value="April">April</option>
+                         <option value="May">May</option>
+                         <option value="June">June</option>
+                         <option value="July">July</option>
+                         <option value="August">August</option>
+                         <option value="September">September</option>
+                         <option value="October">October</option>
+                         <option value="November">November</option>
+                         <option value="December">December</option>
+                         <!-- Add other months here -->
+                       </select>
+                     </div>
+                     <!-- Text field for number -->
+                     <div class="form-group">
+                       <label for="number">AIMS </label>
+                       <input type="number" class="form-control" id="AIMSnumber" name="number" required>
+                     </div>
+                     <button type="submit" style="width:100%;" class="btn btn btn-warning">Save</button>
+                   </form>
+                     <div class="container mt-4">
+
+            <div id="errorMessages" class="mt-3 text-danger"></div>
+            <div id="successMessages" class="mt-3 text-success"></div>
+        </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Include Bootstrap JS and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+             <footer class="footer mt-auto py-3 bg-dark">
+    <div class="container">
+      <p><span style="color: #ffc107;">Contact : <span style="color: #ffffff;"><a style="color: #ffffff;" title="Contact " href="mailto:darussalaamoffice@gmail.com" target="_blank">darussalaamoffice@gmail.com</a></span></span></p>
+    </div>
+    </footer>
+    </body>
+    </html>
+
+    <script type="text/javascript">/// JavaScript
+    document.addEventListener("DOMContentLoaded", function() {
+        const pages = ["home", "about", "Privacy", "Setting", "rate"];
+        const defaultPage = "home"; // Set the default page
+
+        function showPage(page) {
+            pages.forEach(p => {
+                document.getElementById(p).style.display = "none";
+            });
+            document.getElementById(page).style.display = "block";
+        }
+
+        // Initial page load
+        const initialPage = window.location.hash ? window.location.hash.substr(1) : defaultPage;
+        showPage(initialPage);
+
+        // Listen for hash changes
+        window.addEventListener("hashchange", function() {
+            const currentPage = window.location.hash.substr(1);
+            showPage(currentPage);
+            document.getElementById("navbar").click();
+        });
+    });
+
+    function resetMessage() {
+        document.getElementById("errorMessages").textContent = "";
+        document.getElementById("successMessages").textContent = "";
+    }
+
+
+    function saveData() {
+      const month = document.getElementById('month').value;
+      const AIMSnumber = document.getElementById('AIMSnumber').value;
+
+      // Save data to local storage
+      localStorage.setItem('myString', month);
+      localStorage.setItem('myNumber', AIMSnumber);
+
+     const userName =  localStorage.getItem('myString');
+     document.getElementById('savedString').textContent = `Month, ${userName}`;
+     const getAIMSnumber = localStorage.getItem('myNumber');
+     document.getElementById('savedNumber').textContent = `AIMS, ${getAIMSnumber}`;
+
+      // Display saved datafsdfsd
+      document.getElementById('savedString').textContent = `Month: ${month}`;
+      document.getElementById('savedNumber').textContent = `AIMS: ${AIMSnumber}`;
+
+     alert("Saved!");
+    }
+
+    // Check if data exists in local storage on page load
+    const storedString = localStorage.getItem('myString');
+    const storedNumber = localStorage.getItem('myNumber');
+    if (storedString && storedNumber) {
+      document.getElementById('dataSection').style.display = 'block';
+      document.getElementById('savedString').textContent = `Month: ${storedString}`;
+      document.getElementById('savedNumber').textContent = `AIMS: ${storedNumber}`;
+    } else {
+      document.getElementById('dataSection').style.display = 'none';
+    }
+
+    const CheckTehrik = document.getElementById('CheckTehrik');
+    const CheckWaqf = document.getElementById('CheckWaqf');
+    const numberInputs = document.querySelectorAll('.number-input');
+
+    // Event listener for checkbox 1
+    CheckTehrik.addEventListener('change', () => {
+        numberInputs[0].style.display = CheckTehrik.checked ? 'block' : 'none';
+        numberInputs[0].value = ''; // Clear input value
+    });
+
+    // Event listener for checkbox 2
+    CheckWaqf.addEventListener('change', () => {
+        numberInputs[1].style.display = CheckWaqf.checked ? 'block' : 'none';
+        numberInputs[1].value = ''; // Clear input value
+    });
+
+    // Validate input value (positive number)
+    const table = document.getElementById('myTable');
+    CheckTehrik.addEventListener('change', function() {
+        const rows = table.getElementsByTagName('tr');
+        const wordToMatch1 = 'Tehrik';
+        const wordToMatch2 = 'Waqf';
+
+        for (let i = rows.length - 1; i >= 0; i--) {
+            const rowText = rows[i].textContent;
+            if (rowText.includes(wordToMatch1)) {
+                table.deleteRow(i);
+            } else if (rowText.includes(wordToMatch2)) {
+                table.deleteRow(i);
+            }
+        }
+        calculate();
+    });
+
+
+    CheckWaqf.addEventListener('change', function() {
+        const rows = table.getElementsByTagName('tr');
+        const wordToMatch1 = 'Tehrik';
+        const wordToMatch2 = 'Waqf';
+
+        for (let i = rows.length - 1; i >= 0; i--) {
+            const rowText = rows[i].textContent;
+            if (rowText.includes(wordToMatch1)) {
+                table.deleteRow(i);
+            } else if (rowText.includes(wordToMatch2)) {
+                table.deleteRow(i);
+            }
+        }
+        calculate();
+    });
+
+
+    function RefreshTable() {
+        const rows = table.getElementsByTagName('tr');
+        const wordToMatch1 = 'Tehrik';
+        const wordToMatch2 = 'Waqf';
+
+        for (let i = rows.length - 1; i >= 0; i--) {
+            const rowText = rows[i].textContent;
+            if (rowText.includes(wordToMatch1)) {
+                table.deleteRow(i);
+            } else if (rowText.includes(wordToMatch2)) {
+                table.deleteRow(i);
+            }
+        }
+    }
+
+
+
+    function calculate() {
+        RefreshTable();
+        numberInputs.forEach((input) => {
+            input.addEventListener('input', () => {
+                const inputValue = parseFloat(input.value);
+                if (isNaN(inputValue) || inputValue <= 0) {
+                    input.setCustomValidity('Please enter a positive number.');
+                } else {
+                    input.setCustomValidity('');
+                }
+            });
+        });
+        numberInputs.forEach((input) => {
+            input.addEventListener('input', () => {
+                const inputValue = parseFloat(input.value);
+                if (isNaN(inputValue) || inputValue <= 0) {
+                    input.setCustomValidity('Please enter a positive number.');
+                } else {
+                    input.setCustomValidity('');
+                }
+            });
+        });
+        const salary = parseFloat(document.getElementById('salary').value);
+        const fundType = document.getElementById('fundType').value;
+        const resultsTable = document.getElementById('myTable');
+        const numberField = document.getElementById('salary');
+        const InputTehrik = parseFloat(document.getElementById('numberInputTehrik').value);
+        const InputWaqf = parseFloat(document.getElementById('numberInputwaqf').value);
+        const CheckTehrik = document.getElementById('CheckTehrik');
+        const CheckWaqf = document.getElementById('CheckWaqf');
+        const radioKhuddam = document.getElementById('radioKhuddam');
+        const radioLajna = document.getElementById('radioLajna');
+        const radioAnsar = document.getElementById('radioAnsar');
+        const radioStudent = document.getElementById('radioStudent');
+
+        // Clear previous results
+        //resultsTable.innerHTML = '';
+
+        //All Radio empty
+        if (!document.getElementById('radioKhuddam').checked && !document.getElementById('radioLajna').checked && !document.getElementById('radioAnsar').checked && !document.getElementById('radioStudent').checked) {
+            alert("Please Choose a member group!");
+ //student selected
+        } else if (document.getElementById('radioStudent').checked) {
+            const aamString = "Aam";
+            const groupString = "Non-working";
+            const aam = 0;
+            const jalsa = 0;
+            const khuddam = 60;
+            const ijtema = 15;
+            const TehrikeJadid = Math.ceil(InputTehrik);
+            const WaqfeJadid = Math.ceil(InputWaqf);
+            if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                const table = document.getElementById('myTable');
+                const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                const cell1 = newRow1.insertCell(0);
+                const cell2 = newRow1.insertCell(1);
+                const cellR1 = newRow2.insertCell(0);
+                const cellR2 = newRow2.insertCell(1);
+                cell1.textContent = "Tehrik-e-Jadid";
+                cell2.textContent = parseFloat(InputTehrik);
+                cellR1.textContent = "Waqf-e-Jadid";
+                cellR2.textContent = parseFloat(InputWaqf);
+
+                const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                document.getElementById("aamString").textContent = aamString;
+                document.getElementById("aamValue").textContent = aam;
+                document.getElementById("jalsaValue").textContent = jalsa;
+                document.getElementById("groupString").textContent = groupString;
+                document.getElementById("khuddamValue").textContent = khuddam;
+                document.getElementById("ijtemaValue").textContent = ijtema;
+                document.getElementById("totalValue").textContent = total;
+            } else if (!isNaN(InputTehrik)) {
+
+                const table = document.getElementById('myTable');
+                const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                cell1.textContent = "Tehrik-e-Jadid";
+                cell2.textContent = parseFloat(InputTehrik);
+
+                const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                document.getElementById("aamString").textContent = aamString;
+                document.getElementById("aamValue").textContent = aam;
+                document.getElementById("jalsaValue").textContent = jalsa;
+                document.getElementById("groupString").textContent = groupString;
+                document.getElementById("khuddamValue").textContent = khuddam;
+                document.getElementById("ijtemaValue").textContent = ijtema;
+                document.getElementById("totalValue").textContent = total;
+            } else if (!isNaN(InputWaqf)) {
+
+
+                const table = document.getElementById('myTable');
+                const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                cell1.textContent = "Waqf-e-Jadid";
+                cell2.textContent = parseFloat(InputWaqf);
+                const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                document.getElementById("aamString").textContent = aamString;
+                document.getElementById("aamValue").textContent = aam;
+                document.getElementById("jalsaValue").textContent = jalsa;
+                document.getElementById("groupString").textContent = groupString;
+                document.getElementById("khuddamValue").textContent = khuddam;
+                document.getElementById("ijtemaValue").textContent = ijtema;
+                document.getElementById("totalValue").textContent = total;
+
+            } else {
+
+                const total = aam + jalsa + khuddam + ijtema;
+                document.getElementById("aamString").textContent = aamString;
+                document.getElementById("aamValue").textContent = aam;
+                document.getElementById("jalsaValue").textContent = jalsa;
+                document.getElementById("groupString").textContent = groupString;
+                document.getElementById("khuddamValue").textContent = khuddam;
+                document.getElementById("ijtemaValue").textContent = ijtema;
+                document.getElementById("totalValue").textContent = total;
+            }
+
+    //NonMusis and Khuddam or Lajna selected        
+        } else if (fundType === 'NonMusis' && document.getElementById('radioLajna').checked) {
+            if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
+                alert("Please ensure that all input fields are filled");
+            } else {
+                const aamString = "Aam";
+                const groupString = "Lajna";
+                const aam = Math.ceil((6.25 / 100) * salary, 5);
+                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
+                const khuddam = Math.ceil((1 / 100) * salary, 5);
+                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const TehrikeJadid = Math.ceil(InputTehrik);
+                const WaqfeJadid = Math.ceil(InputWaqf);
+                if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow1.insertCell(0);
+                    const cell2 = newRow1.insertCell(1);
+                    const cellR1 = newRow2.insertCell(0);
+                    const cellR2 = newRow2.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+                    cellR1.textContent = "Waqf-e-Jadid";
+                    cellR2.textContent = parseFloat(InputWaqf);
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputTehrik)) {
+                    
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+
+
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputWaqf)) {
+
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Waqf-e-Jadid";
+                    cell2.textContent = parseFloat(InputWaqf);
+                    const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+
+                } else {
+
+                    const total = aam + jalsa + khuddam + ijtema;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                }
+            }
+        }
+    //NonMusis and khuddam selected  
+        else if (fundType === 'NonMusis' && document.getElementById('radioKhuddam').checked) {
+            if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
+                alert("Please ensure that all your inputs are filled");
+            } else {
+                const aamString = "Aam";
+                const groupString = "Khuddam";
+                const aam = Math.ceil((6.25 / 100) * salary, 5);
+                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
+                const khuddam = Math.ceil((1 / 100) * salary, 5);
+                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const TehrikeJadid = Math.ceil(InputTehrik);
+                const WaqfeJadid = Math.ceil(InputWaqf);
+                if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow1.insertCell(0);
+                    const cell2 = newRow1.insertCell(1);
+                    const cellR1 = newRow2.insertCell(0);
+                    const cellR2 = newRow2.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+                    cellR1.textContent = "Waqf-e-Jadid";
+                    cellR2.textContent = parseFloat(InputWaqf);
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputTehrik)) {
+                    
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+
+
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputWaqf)) {
+
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Waqf-e-Jadid";
+                    cell2.textContent = parseFloat(InputWaqf);
+                    const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+
+                } else {
+
+                    const total = aam + jalsa + khuddam + ijtema;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                }
+            }
+        }
+    //NonMusis and Ansar selected     
+        else if (fundType === 'NonMusis' && document.getElementById('radioAnsar').checked) {
+            if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
+                alert("Please fill all inputs");
+            } else {
+                const aamString = "Aam";
+                const groupString = "Ansar";
+                const aam = Math.ceil((6.25 / 100) * salary, 5);
+                const jalsa = Math.ceil((0.833 / 100) * salary, 5);
+                const khuddam = Math.ceil((1 / 100) * salary, 5);
+                const ijtema = Math.ceil((0.0833 / 100) * salary, 5);
+                const TehrikeJadid = Math.ceil(InputTehrik);
+                const WaqfeJadid = Math.ceil(InputWaqf);
+                if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow1.insertCell(0);
+                    const cell2 = newRow1.insertCell(1);
+                    const cellR1 = newRow2.insertCell(0);
+                    const cellR2 = newRow2.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+                    cellR1.textContent = "Waqf-e-Jadid";
+                    cellR2.textContent = parseFloat(InputWaqf);
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputTehrik)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+
+
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputWaqf)) {
+
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Waqf-e-Jadid";
+                    cell2.textContent = parseFloat(InputWaqf);
+                    const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+
+                } else {
+
+                    const total = aam + jalsa + khuddam + ijtema;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                }
+            }
+        }
+    //Musis and Ansar selected     
+        else if (fundType === 'Musis' && document.getElementById('radioAnsar').checked) {
+            if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
+                alert("Please fill all inputs");
+            } else {
+                const aamString = "Aam";
+                const groupString = "Ansar";
+                const aam = Math.ceil((10 / 100) * salary, 5);
+                const jalsa = Math.ceil((0.833 / 100) * salary, 5);
+                const khuddam = Math.ceil((1 / 100) * salary, 5);
+                const ijtema = Math.ceil((0.0833 / 100) * salary, 5);
+                const TehrikeJadid = Math.ceil(InputTehrik);
+                const WaqfeJadid = Math.ceil(InputWaqf);
+                if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow1.insertCell(0);
+                    const cell2 = newRow1.insertCell(1);
+                    const cellR1 = newRow2.insertCell(0);
+                    const cellR2 = newRow2.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+                    cellR1.textContent = "Waqf-e-Jadid";
+                    cellR2.textContent = parseFloat(InputWaqf);
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputTehrik)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+
+
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputWaqf)) {
+
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Waqf-e-Jadid";
+                    cell2.textContent = parseFloat(InputWaqf);
+                    const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+
+                } else {
+
+                    const total = aam + jalsa + khuddam + ijtema;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                }
+            }
+
+    //Musis and Lajna selected
+        } else if (fundType === 'Musis' && document.getElementById('radioLajna').checked) {
+            if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
+                alert("Please fill all inputs");
+            } else {
+                const aamString = "Wassiyat";
+                const groupString = "Lajna";
+                const aam = Math.ceil((10 / 100) * salary, 5);
+                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
+                const khuddam = Math.ceil((1 / 100) * salary, 5);
+                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const TehrikeJadid = Math.ceil(InputTehrik);
+                const WaqfeJadid = Math.ceil(InputWaqf);
+                if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow1.insertCell(0);
+                    const cell2 = newRow1.insertCell(1);
+                    const cellR1 = newRow2.insertCell(0);
+                    const cellR2 = newRow2.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+                    cellR1.textContent = "Waqf-e-Jadid";
+                    cellR2.textContent = parseFloat(InputWaqf);
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputTehrik)) {
+                    
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+
+
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputWaqf)) {
+
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Waqf-e-Jadid";
+                    cell2.textContent = parseFloat(InputWaqf);
+                    const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+
+                } else {
+
+                    const total = aam + jalsa + khuddam + ijtema;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                }
+            }
+    //Musis and Khuddam selected       
+        } else if (fundType === 'Musis' && document.getElementById('radioKhuddam').checked) {
+            if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
+                alert("Please fill all inputs");
+            } else {
+                const aamString = "Wassiyat";
+                const groupString = "Khuddam";
+                const aam = Math.ceil((10 / 100) * salary, 5);
+                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
+                const khuddam = Math.ceil((1 / 100) * salary, 5);
+                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const TehrikeJadid = Math.ceil(InputTehrik);
+                const WaqfeJadid = Math.ceil(InputWaqf);
+                if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow1 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const newRow2 = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow1.insertCell(0);
+                    const cell2 = newRow1.insertCell(1);
+                    const cellR1 = newRow2.insertCell(0);
+                    const cellR2 = newRow2.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+                    cellR1.textContent = "Waqf-e-Jadid";
+                    cellR2.textContent = parseFloat(InputWaqf);
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputTehrik)) {
+                    
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Tehrik-e-Jadid";
+                    cell2.textContent = parseFloat(InputTehrik);
+
+
+
+                    const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                } else if (!isNaN(InputWaqf)) {
+
+
+                    const table = document.getElementById('myTable');
+                    const lastRow = table.rows[table.rows.length - 1]; // Get the last row
+                    const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    cell1.textContent = "Waqf-e-Jadid";
+                    cell2.textContent = parseFloat(InputWaqf);
+                    const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+
+                } else {
+
+                    const total = aam + jalsa + khuddam + ijtema;
+                    document.getElementById("aamString").textContent = aamString;
+                    document.getElementById("aamValue").textContent = aam;
+                    document.getElementById("jalsaValue").textContent = jalsa;
+                    document.getElementById("groupString").textContent = groupString;
+                    document.getElementById("khuddamValue").textContent = khuddam;
+                    document.getElementById("ijtemaValue").textContent = ijtema;
+                    document.getElementById("totalValue").textContent = total;
+                }
+            }
+        } else {
+            console.log("end");
+        }
+
+    }
+    </script>
+    <style type="text/css">
+    .collapse {
+      padding: 30px 15px;
+    }
+    .number-input {
+                display: none;
+            }
+    .Inputcontrol{
+          width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+    a[href$="https://tiiny.host?ref=free-site"] {
+        display: none !important;
+    }
+      
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: red; /* Customize as needed */
+      color: white; /* Customize text color */
+      text-align: center; /* Center the content */
+    }
+    </style>
+    </body>
+    </html>
