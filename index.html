@@ -123,24 +123,29 @@
                     <tr>
                         <th>Funds</th>
                         <th>Amount (Rs)</th>
+                        <th style="width:30%">+ (Rs)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td id="aamString">Aam</td>
                         <td id="aamValue"></td>
+                        <td><input type="number" name="1" id="inputAam" style="width:50%" onchange="calculate()"></td>
                     </tr>
                     <tr>
                         <td>Jalsa</td>
                         <td id="jalsaValue"></td>
+                        <td><input type="number" id="inputJalsa" style="width:50%" onchange="calculate()"></td>
                     </tr>
                     <tr>
                         <td id="groupString">Khuddam</td>
                         <td id="khuddamValue"></td>
+                        <td><input type="number" id="inputKhuddam" style="width:50%" onchange="calculate()"></td>
                     </tr>
                     <tr>
                         <td>Ijtema</td>
                         <td id="ijtemaValue"></td>
+                        <td><input type="number" id="inputIjtema" style="width:50%" onchange="calculate()"></td>
                     </tr>
                     <tr>
                         <td style="font-weight: bold;">Total</td>
@@ -309,6 +314,7 @@
         });
     });
 
+        
     function resetMessage() {
         document.getElementById("errorMessages").textContent = "";
         document.getElementById("successMessages").textContent = "";
@@ -449,6 +455,12 @@
         const radioLajna = document.getElementById('radioLajna');
         const radioAnsar = document.getElementById('radioAnsar');
         const radioStudent = document.getElementById('radioStudent');
+      
+        const inputAam = Number(document.getElementById('inputAam').value);      
+        const inputJalsa = Number(document.getElementById('inputJalsa').value);      
+        const inputKhuddam = Number(document.getElementById('inputKhuddam').value);      
+        const inputIjtema = Number(document.getElementById('inputIjtema').value);      
+
 
         // Clear previous results
         //resultsTable.innerHTML = '';
@@ -462,8 +474,8 @@
             const groupString = "Non-working";
             const aam = 0;
             const jalsa = 0;
-            const khuddam = 60;
-            const ijtema = 15;
+            const khuddam = (60 + inputKhuddam); 
+            const ijtema = (15 + inputIjtema);
             const TehrikeJadid = Math.ceil(InputTehrik);
             const WaqfeJadid = Math.ceil(InputWaqf);
             if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
@@ -538,17 +550,17 @@
                 document.getElementById("totalValue").textContent = total;
             }
 
-    //NonMusis and Khuddam or Lajna selected        
+    //NonMusis  Lajna selected        
         } else if (fundType === 'NonMusis' && document.getElementById('radioLajna').checked) {
             if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
                 alert("Please ensure that all input fields are filled");
             } else {
                 const aamString = "Aam";
                 const groupString = "Lajna";
-                const aam = Math.ceil((6.25 / 100) * salary, 5);
-                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
-                const khuddam = Math.ceil((1 / 100) * salary, 5);
-                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const aam = (Math.ceil((6.25 / 100) * salary, 5))+ inputAam; 
+                const jalsa = (Math.ceil(((10 / 100) * salary) / 12, 6))+ inputJalsa; 
+                const khuddam = (Math.ceil((1 / 100) * salary, 5))+ inputKhuddam; 
+                const ijtema = (Math.ceil(((3 / 100) * salary) / 12, 5))+ inputIjtema; 
                 const TehrikeJadid = Math.ceil(InputTehrik);
                 const WaqfeJadid = Math.ceil(InputWaqf);
                 if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
@@ -629,16 +641,16 @@
     //NonMusis and khuddam selected  
         else if (fundType === 'NonMusis' && document.getElementById('radioKhuddam').checked) {
             if (isNaN(salary) || (CheckTehrik.checked) && isNaN(InputTehrik) || (CheckWaqf.checked) && isNaN(InputWaqf)) {
-                alert("Please ensure that all your inputs are filled");
+                alert("Please fill all inputs");
             } else {
                 const aamString = "Aam";
                 const groupString = "Khuddam";
-                const aam = Math.ceil((6.25 / 100) * salary, 5);
-                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
-                const khuddam = Math.ceil((1 / 100) * salary, 5);
-                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const aam = (Math.ceil((6.25 / 100) * salary, 5))+ inputAam; 
+                const jalsa = (Math.ceil(((10 / 100) * salary) / 12, 6))+ inputJalsa; 
+                const khuddam = (Math.ceil((1 / 100) * salary, 5))+ inputKhuddam; 
+                const ijtema = (Math.ceil(((3 / 100) * salary) / 12, 5))+ inputIjtema; 
                 const TehrikeJadid = Math.ceil(InputTehrik);
-                const WaqfeJadid = Math.ceil(InputWaqf);
+                const WaqfeJadid = Math.ceil(InputWaqf); 
                 if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
 
                     const table = document.getElementById('myTable');
@@ -671,8 +683,6 @@
                     const cell2 = newRow.insertCell(1);
                     cell1.textContent = "Tehrik-e-Jadid";
                     cell2.textContent = parseFloat(InputTehrik);
-
-
 
                     const total = aam + jalsa + khuddam + ijtema + InputTehrik;
                     document.getElementById("aamString").textContent = aamString;
@@ -721,10 +731,10 @@
             } else {
                 const aamString = "Aam";
                 const groupString = "Ansar";
-                const aam = Math.ceil((6.25 / 100) * salary, 5);
-                const jalsa = Math.ceil((0.833 / 100) * salary, 5);
-                const khuddam = Math.ceil((1 / 100) * salary, 5);
-                const ijtema = Math.ceil((0.0833 / 100) * salary, 5);
+                const aam = (Math.ceil((6.25 / 100) * salary, 5)) + inputAam; 
+                const jalsa = (Math.ceil((0.833 / 100) * salary, 5)) + inputJalsa; 
+                const khuddam = (Math.ceil((1 / 100) * salary, 5)) + inputKhuddam; 
+                const ijtema = (Math.ceil((0.0833 / 100) * salary, 5)) + inputIjtema; 
                 const TehrikeJadid = Math.ceil(InputTehrik);
                 const WaqfeJadid = Math.ceil(InputWaqf);
                 if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
@@ -809,10 +819,10 @@
             } else {
                 const aamString = "Aam";
                 const groupString = "Ansar";
-                const aam = Math.ceil((10 / 100) * salary, 5);
-                const jalsa = Math.ceil((0.833 / 100) * salary, 5);
-                const khuddam = Math.ceil((1 / 100) * salary, 5);
-                const ijtema = Math.ceil((0.0833 / 100) * salary, 5);
+                const aam = (Math.ceil((10 / 100) * salary, 5)) + inputAam; 
+                const jalsa = (Math.ceil((0.833 / 100) * salary, 5)) + inputJalsa; 
+                const khuddam = (Math.ceil((1 / 100) * salary, 5)) + inputKhuddam; 
+                const ijtema = (Math.ceil((0.0833 / 100) * salary, 5)) + inputIjtema; 
                 const TehrikeJadid = Math.ceil(InputTehrik);
                 const WaqfeJadid = Math.ceil(InputWaqf);
                 if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
@@ -897,10 +907,10 @@
             } else {
                 const aamString = "Wassiyat";
                 const groupString = "Lajna";
-                const aam = Math.ceil((10 / 100) * salary, 5);
-                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
-                const khuddam = Math.ceil((1 / 100) * salary, 5);
-                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const aam = (Math.ceil((10 / 100) * salary, 5)) + inputAam; 
+                const jalsa = (Math.ceil(((10 / 100) * salary) / 12, 6)) + inputJalsa; 
+                const khuddam = (Math.ceil((1 / 100) * salary, 5)) + inputKhuddam; 
+                const ijtema = (Math.ceil(((3 / 100) * salary) / 12, 5)) + inputIjtema; 
                 const TehrikeJadid = Math.ceil(InputTehrik);
                 const WaqfeJadid = Math.ceil(InputWaqf);
                 if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
@@ -984,10 +994,10 @@
             } else {
                 const aamString = "Wassiyat";
                 const groupString = "Khuddam";
-                const aam = Math.ceil((10 / 100) * salary, 5);
-                const jalsa = Math.ceil(((10 / 100) * salary) / 12, 6);
-                const khuddam = Math.ceil((1 / 100) * salary, 5);
-                const ijtema = Math.ceil(((3 / 100) * salary) / 12, 5);
+                const aam = (Math.ceil((10 / 100) * salary, 5)) + inputAam; 
+                const jalsa = (Math.ceil(((10 / 100) * salary) / 12, 6)) + inputJalsa; 
+                const khuddam = (Math.ceil((1 / 100) * salary, 5)) + inputKhuddam; 
+                const ijtema = (Math.ceil(((3 / 100) * salary) / 12, 5)) + inputIjtema; 
                 const TehrikeJadid = Math.ceil(InputTehrik);
                 const WaqfeJadid = Math.ceil(InputWaqf);
                 if (!isNaN(InputTehrik) && !isNaN(InputWaqf)) {
