@@ -2,15 +2,18 @@
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open('my-cache').then((cache) => {
+          console.log('Notification 3');
             return cache.addAll([
                 '/',
-                '/index.html'
+                '/index.html',
+                'index.html'
             ]);
         })
     );
 });
 
 self.addEventListener('fetch', (event) => {
+  console.log('Notification 2');
     event.respondWith(
         caches.match(event.request).then((response) => {
             return response || fetch(event.request);
@@ -19,6 +22,7 @@ self.addEventListener('fetch', (event) => {
 });
 
 self.addEventListener('push', (event) => {
+              console.log('Notification 1');
   const data = event.data.json(); // Parse the push message data (if it's in JSON format)
   const title = data.title || 'Chanda Calculator Notification'; // Get the title from the data or use a default title
 
