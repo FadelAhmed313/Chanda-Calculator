@@ -11,7 +11,8 @@
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
-<script type="module" src="firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-messaging-compat.js"></script>
+
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#"> <strong>Chanda Calculator</strong></a>
@@ -1120,6 +1121,50 @@
         alert('Notification :', payload);
         // Handle the notification data or display it to the user
     });
+
+        // Initialize Firebase (if using Firebase)
+        // const firebaseConfig = { ... }; // Your Firebase config
+
+        // Register the service worker for push notifications
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+              console.error('Service Worker registration failed:', error);
+            });
+        }
+
+        // 1. Handle push notifications in the service worker (sw.js)
+        self.addEventListener('push', (event) => {
+          const options = {
+            body: event.data.text(),
+            icon: '/path/to/icon.png',
+            // Other notification options...
+          };
+          event.waitUntil(self.registration.showNotification('New Notification', options));
+        });
+
+        // 2. Schedule a background task (e.g., every 10 minutes)
+        const backgroundTask = () => {
+          // Perform your notification check or other tasks here
+          console.log('Background task executed.');
+          setTimeout(backgroundTask, 10 * 60 * 1000); // 10 minutes
+        };
+
+        // Start the initial background task
+        backgroundTask();
+
+        // 3. Send FCM notifications (server-side function)
+        // Example using Firebase Cloud Functions:
+        // const functions = require('firebase-functions');
+        // exports.sendNotifications = functions.pubsub.schedule('every 1 hours').timeZone('your-timezone').onRun((context) => {
+        //   // Check for new notifications and send FCM messages
+        //   // ...
+        //   return null;
+        // });
+
     </script>
     <style type="text/css">
     .collapse {
