@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
           console.log('Notification 3');
             return cache.addAll([
                 '/',
-                '/index.html'
+                'index.html'
             ]);
         })
     );
