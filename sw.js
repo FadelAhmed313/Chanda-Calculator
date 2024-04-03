@@ -5,6 +5,7 @@ self.addEventListener('install', (event) => {
           console.log('Notification 3');
             return cache.addAll([
                 '/',
+                '/index.html',
                 'index.html'
             ]);
         })
@@ -35,3 +36,12 @@ self.addEventListener('push', (event) => {
   );
 });
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.message === 'submit') {
+        // Process the request synchronously
+        // ...
+        // Return true only when you're ready to send the response
+        sendResponse({ success: true });
+    }
+    // For other cases, don't return true
+});
