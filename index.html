@@ -1136,21 +1136,25 @@
               });
           }
 
-        // 1. Handle push notifications in the service worker (sw.js)
-        self.addEventListener('push', (event) => {
-          const options = {
-            body: event.data.text(),
-            icon: '/path/to/icon.png',
-            // Other notification options...
-          };
-          event.waitUntil(self.registration.showNotification('New Notification', options));
-        });
-
+    
         // 2. Schedule a background task (e.g., every 10 minutes)
         const backgroundTask = () => {
           // Perform your notification check or other tasks here
           console.log('Background task executed.');
-          setTimeout(backgroundTask, 10 * 60 * 1000); // 10 minutes
+          self.addEventListener('push', (event) => {
+          const data = event.data.json(); // Parse the push message data (if it's in JSON format)
+          const title = data.title || 'Chanda Calculator Notification'; // Get the title from the data or use a default title
+
+          const options = {
+            body: data.body || 'Please pay your chanda for the current month', // Get the notification body (or use a default)
+            icon: 'ico.png', // Set an icon for the notification
+          };
+
+          event.waitUntil(
+            self.registration.showNotification(title, options)
+          );
+        });
+          //setTimeout(backgroundTask, 10 * 60 * 1000); // 10 minutes
         };
 
         // Start the initial background task
