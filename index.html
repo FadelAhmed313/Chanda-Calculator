@@ -1138,7 +1138,7 @@
 
     
         // 2. Schedule a background task (e.g., every 10 minutes)
-        const backgroundTask = () => {
+        function backgroundTask() {
           // Perform your notification check or other tasks here
           console.log('Background task executed.');
           self.addEventListener('push', (event) => {
