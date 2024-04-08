@@ -8,8 +8,9 @@ const check = () => {
 }
 const registerServiceWorker = async () => {
   const swRegistration = await navigator.serviceWorker.register('service.js')
-  console.log("service.js loaded")
+
   return swRegistration
+    console.log("service.js :",swRegistration)
 }
 const requestNotificationPermission = async () => {
   const permission = await window.Notification.requestPermission()
