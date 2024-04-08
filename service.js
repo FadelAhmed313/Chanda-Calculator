@@ -15,7 +15,7 @@ const urlBase64ToUint8Array = base64String => {
 }
 
 const saveSubscription = async (subscription) => {
-    const response = await fetch('https://beautiful-faloodeh-89f52b.netlify.app/save-subscription', {
+    const response = await fetch('https://appilix.com/account/dashboard/50528/notification/save-subscription', {
         method: 'post',
         headers: { 'Content-type': "application/json" },
         body: JSON.stringify(subscription)
