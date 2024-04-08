@@ -27,7 +27,7 @@ self.addEventListener('activate', async () => {
   // This will be called only once when the service worker is activated.
   try {
     const applicationServerKey = urlB64ToUint8Array(
-      'AAAA_OCG7fQ:APA91bEIiceVg1P9RoME0BWqmUPRnaTSsEZIDSd_463JC22mFNZT8QAGMsJkfmVyjnWvSzSx6PWYxS1NLUanR-zU00SoRVdnpcLBx-yUuJVXdZChz7MsGXaVwYlF3D6RFm2BLiyQeHKk'
+      'BEJCHw1b7MIdAfVTSo3kJ0HtQqh0Hld8VB4aunAUfWcQC-Znxxpld47E2Lo2IGH0kGxlxPmdwpquln8RqYSYs24'
     )
     console.log('app key ', applicationServerKey)
     const options = { applicationServerKey, userVisibleOnly: true }
