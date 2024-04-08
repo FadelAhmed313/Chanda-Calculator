@@ -12,6 +12,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-messaging-compat.js"></script>
+<script src="index.js"></script>
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -1087,56 +1088,6 @@
         }
 
     }
-
-        const firebaseConfig = {
-            apiKey: 'AIzaSyBp7MQkZHx00lpCthWsTd_0eO5Hc54bIso',
-            authDomain: 'chanda-calculator-c702c.firebaseapp.com',
-            projectId: 'chanda-calculator-c702c',
-            storageBucket: 'chanda-calculator-c702c.appspot.com',
-            messagingSenderId: '1086098697716',
-            appId: '1086098697716'
-        };
-
-
-        firebase.initializeApp(firebaseConfig);
-        const messaging = firebase.messaging();
-
-        // Request notification permission
-        async function requestNotificationPermission() {
-        const permission = await Notification.requestPermission();
-            if (permission === 'granted') {
-                // Get the FCM token
-                messaging.getToken().then((token) => {
-                    console.log('FCM Token:', token);
-                    // Send this token to your server for sending notifications
-                });
-            } else {
-                // Handle denied permission
-                console.log('Handle denied permission');
-            }
-        }
-
-        // Handle incoming messages
-        messaging.onMessage((payload) => {
-            console.log('Notification :', payload);
-        alert('Notification :', payload);
-        // Handle the notification data or display it to the user
-    });
-
-        // Initialize Firebase (if using Firebase)
-        // const firebaseConfig = { ... }; // Your Firebase config
-
-        // Register the service worker for push notifications
-         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-              .then((registration) => {
-                console.log('Service Worker registered with scope:', registration.scope);
-              })
-              .catch((error) => {
-                console.error('Service Worker registration failed:', error);
-              });
-          }
-
 
     </script>
     <style type="text/css">
