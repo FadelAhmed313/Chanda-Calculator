@@ -1,5 +1,5 @@
 // Initialize Firebase (make sure you have already set up your Firebase project)
-const firebase.initializeApp({
+const config =  firebase.initializeApp({
     apiKey: "zw24g396iscrduf8yqep",
     authDomain: 'chanda-calculator-c702c.firebaseapp.com',
     projectId: 'chanda-calculator-c702c',
@@ -9,7 +9,7 @@ const firebase.initializeApp({
 });
 
 // Get the messaging instance
-const messaging = firebase.messaging();
+const messaging = firebase.messaging(config);
 
 // Function to send the token to your server
 function sendTokenToServer(currentToken) {
