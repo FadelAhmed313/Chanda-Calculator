@@ -5,7 +5,7 @@ const config =  firebase.initializeApp({
     projectId: 'chanda-calculator-c702c',
     storageBucket: 'chanda-calculator-c702c.appspot.com',
     messagingSenderId: '1086098697716',
-    appId: '1086098697716'
+    appId: '1:1086098697716:android:82f855ba2c0780bb489da1'
 });
 
 // Get the messaging instance
