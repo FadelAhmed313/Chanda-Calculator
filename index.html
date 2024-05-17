@@ -324,24 +324,6 @@
 
     <script type="text/javascript">/// JavaScript
     document.addEventListener("DOMContentLoaded", function () {
-
- const forYear = localStorage.getItem("yearString");
-  document.getElementById("savedYear").textContent = `Month, ${forYear}`;
-  const forMonth = localStorage.getItem("monthString");
-  document.getElementById("savedMonth").textContent = `Month, ${forMonth}`;
-  const getAIMSnumber = localStorage.getItem("AIMSnumber");
-  document.getElementById("savedNumber").textContent = `AIMS, ${getAIMSnumber}`;
-
-  // Display saved data
-  document.getElementById("savedYear").textContent = `Year: ${forYear}`;
-  document.getElementById("savedMonth").textContent = `Month: ${forMonth}`;
-  document.getElementById("savedNumber").textContent = `AIMS: ${getAIMSnumber}`;
-  var Var_AIMSnumber = (getAIMSnumber != '') ? getAIMSnumber : '';
-  // Set the value of "c" in the hidden input field
-  document.getElementById('AIMSnumber').value = Var_AIMSnumber;
-
-
-      
   const pages = ["home", "about", "Privacy", "Setting", "rate"];
   const defaultPage = "home"; // Set the default page
 
@@ -420,9 +402,10 @@ function retreiveAims(){
   const forYear = localStorage.getItem("yearString");
   const forMonth = localStorage.getItem("monthString");
   const getAIMSnumber = localStorage.getItem("AIMSnumber");
-
+ 
   // Display saved data
-  document.getElementById("savedYear").textContent = `Year: ${forYear}`;
+  //document.getElementById("savedYear").textContent = `Year: ${forYear}`;
+  document.getElementById("savedYear").textContent = (forYear != '') ? `Year: ${forYear}` : 'empty';
   document.getElementById("savedMonth").textContent = `Month: ${forMonth}`;
   document.getElementById("savedNumber").textContent = `AIMS: ${getAIMSnumber}`;
   var Var_AIMSnumber = (getAIMSnumber != '') ? getAIMSnumber : '';
@@ -430,6 +413,7 @@ function retreiveAims(){
   document.getElementById('AIMSnumber').value = Var_AIMSnumber;
 }
 retreiveAims();
+
       
 function saveData() {
   const year = document.getElementById("year").value;
