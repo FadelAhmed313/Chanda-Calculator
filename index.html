@@ -122,9 +122,21 @@
       </form>
       <div id="dataSection">
         <br />
-        <p id="savedYear"></p>
-        <p id="savedMonth"></p>
-        <p id="savedNumber"></p>
+       
+        
+        
+        <table style="width:85%;">
+    <tr>
+        <td style="text-align: center;font-size: smaller;font-weight: bold;">Year</td>
+        <td style="text-align: center;font-size: smaller;font-weight: bold;">Month</td>
+        <td style="text-align: center;font-size: smaller;font-weight: bold;">Aims</td>
+    </tr>
+    <tr>
+        <td style="text-align: center;font-size: smaller;"><p id="savedYear"></p></td>
+        <td style="text-align: center;font-size: smaller;"><p id="savedMonth"></p></td>
+        <td style="text-align: center;font-size: smaller;"><p id="savedNumber"></p></td>
+    </tr>
+</table>
       </div>
       <table id="myTable" class="table mt-4">
         <thead>
@@ -160,8 +172,8 @@
             <td style="font-weight: bold;" id="totalValue"></td>
             <td style="font-weight: bold;" id="additionalFund"><button onclick="addRow()" type="button" class="btn btn-warning">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"></path>
-</svg></button></td>
+                  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"></path>
+                </svg></button></td>
           </tr>
         </tbody>
       </table>
@@ -324,7 +336,7 @@
 
     <script type="text/javascript">/// JavaScript
     document.addEventListener("DOMContentLoaded", function () {
-  const pages = ["home", "about", "Privacy", "Setting", "rate"];
+const pages = ["home", "about", "Privacy", "Setting", "rate"];
   const defaultPage = "home"; // Set the default page
 
   function showPage(page) {
@@ -399,22 +411,24 @@ alert(total);
 }
 
 function retreiveAims(){
-  const forYear = localStorage.getItem("yearString");
+  const forYear = localStorage.getItem("yearString"); 
   const forMonth = localStorage.getItem("monthString");
   const getAIMSnumber = localStorage.getItem("AIMSnumber");
- 
   // Display saved data
   //document.getElementById("savedYear").textContent = `Year: ${forYear}`;
-  document.getElementById("savedYear").textContent = (forYear != '') ? `Year: ${forYear}` : 'empty';
-  document.getElementById("savedMonth").textContent = `Month: ${forMonth}`;
-  document.getElementById("savedNumber").textContent = `AIMS: ${getAIMSnumber}`;
+  document.getElementById("savedYear").innerText = `${forYear}`;
+  document.getElementById("savedMonth").innerText = `${forMonth}`;
+  document.getElementById("savedNumber").innerText = `${getAIMSnumber}`;
   var Var_AIMSnumber = (getAIMSnumber != '') ? getAIMSnumber : '';
   // Set the value of "c" in the hidden input field
   document.getElementById('AIMSnumber').value = Var_AIMSnumber;
+  
+  if(!forYear || !forMonth || !getAIMSnumber){
+    document.getElementById("dataSection").style.display = "none";
+  }
 }
 retreiveAims();
 
-      
 function saveData() {
   const year = document.getElementById("year").value;
   const month = document.getElementById("month").value;
@@ -424,28 +438,12 @@ function saveData() {
   localStorage.setItem("monthString", month);
   localStorage.setItem("yearString", year);
   localStorage.setItem("AIMSnumber", AIMSnumber);
-
-  const forYear = localStorage.getItem("yearString");
-  document.getElementById("savedYear").textContent = `Month, ${forYear}`;
-  const forMonth = localStorage.getItem("monthString");
-  document.getElementById("savedMonth").textContent = `Month, ${forMonth}`;
-  const getAIMSnumber = localStorage.getItem("AIMSnumber");
-  document.getElementById("savedNumber").textContent = `AIMS, ${getAIMSnumber}`;
-
-  // Display saved data
-  document.getElementById("savedYear").textContent = `Year: ${forYear}`;
-  document.getElementById("savedMonth").textContent = `Month: ${forMonth}`;
-  document.getElementById("savedNumber").textContent = `AIMS: ${getAIMSnumber}`;
-  var Var_AIMSnumber = (getAIMSnumber != '') ? getAIMSnumber : '';
-  // Set the value of "c" in the hidden input field
-  document.getElementById('AIMSnumber').value = Var_AIMSnumber;
-
-
+  retreiveAims();
   alert("Saved!");
 }
 
 // Check if data exists in local storage on page load
-const storedString = localStorage.getItem("myString");
+/*const storedString = localStorage.getItem("myString");
 const storedNumber = localStorage.getItem("myNumber");
 if (storedString && storedNumber) {
   document.getElementById("dataSection").style.display = "block";
@@ -453,7 +451,7 @@ if (storedString && storedNumber) {
   document.getElementById("savedNumber").textContent = `AIMS: ${storedNumber}`;
 } else {
   document.getElementById("dataSection").style.display = "none";
-}
+}*/
 
 const CheckTehrik = document.getElementById("CheckTehrik");
 const CheckWaqf = document.getElementById("CheckWaqf");
@@ -1185,7 +1183,6 @@ let totalAdditionalField = 0;
     console.log("end");
   }
 }
-
     </script>
     <style type="text/css">
     .collapse {
