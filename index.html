@@ -122,21 +122,25 @@
       </form>
       <div id="dataSection">
         <br />
-       
-        
-        
-        <table style="width:55% !important;">
-    <tr>
-        <td style="text-align: center;font-size: smaller;font-weight: bold;">Year</td>
-        <td style="text-align: center;font-size: smaller;font-weight: bold;">Month</td>
-        <td style="text-align: center;font-size: smaller;font-weight: bold;">Aims</td>
-    </tr>
-    <tr>
-        <td style="text-align: center;font-size: smaller;"><p id="savedYear"></p></td>
-        <td style="text-align: center;font-size: smaller;"><p id="savedMonth"></p></td>
-        <td style="text-align: center;font-size: smaller;"><p id="savedNumber"></p></td>
-    </tr>
-</table>
+
+        <table style="width:55%;">
+          <tr>
+            <td style="text-align: center;font-size: smaller;font-weight: bold;">Year</td>
+            <td style="text-align: center;font-size: smaller;font-weight: bold;">Month</td>
+            <td style="text-align: center;font-size: smaller;font-weight: bold;">Aims</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;font-size: smaller;">
+              <p id="savedYear"></p>
+            </td>
+            <td style="text-align: center;font-size: smaller;">
+              <p id="savedMonth"></p>
+            </td>
+            <td style="text-align: center;font-size: smaller;">
+              <p id="savedNumber"></p>
+            </td>
+          </tr>
+        </table>
       </div>
       <table id="myTable" class="table mt-4">
         <thead>
@@ -335,8 +339,8 @@
 </html>
 
     <script type="text/javascript">/// JavaScript
-    document.addEventListener("DOMContentLoaded", function () {
-const pages = ["home", "about", "Privacy", "Setting", "rate"];
+   document.addEventListener("DOMContentLoaded", function () {
+  const pages = ["home", "about", "Privacy", "Setting", "rate"];
   const defaultPage = "home"; // Set the default page
 
   function showPage(page) {
@@ -365,7 +369,6 @@ function resetMessage() {
   document.getElementById("successMessages").textContent = "";
 }
 
-
 function addRow() {
   const table = document.getElementById("myTable");
   const newRow = table.insertRow(table.rows.length - 1); // Insert before the last row
@@ -380,20 +383,20 @@ function addRow() {
 
   // Set input attributes (e.g., type, placeholder, etc.)
   fundInput.type = "text";
-  fundInput.style = "width:100%";  
+  fundInput.style = "width:100%";
   amountInput.type = "number";
   amountInput.style = "width:75%";
   amountInput.id = "additionalField";
   amountInput.class = "additionalField";
   amountInput.name = "additionalField";
-  amountInput.setAttribute( "onchange", "calculate()" );
-  
+  amountInput.setAttribute("onchange", "calculate()");
+
   // Append input fields to cells
   fundCell.appendChild(fundInput);
   amountCell.appendChild(amountInput);
 
   // Update total when input fields change
-  //amountInput.addEventListener("input", updateTotal); 
+  //amountInput.addEventListener("input", updateTotal);
 
   // Initial total value
   updateTotal();
@@ -410,8 +413,8 @@ alert(total);
   document.getElementById("totalValue").textContent = total.toFixed(0);*/
 }
 
-function retreiveAims(){
-  const forYear = localStorage.getItem("yearString"); 
+function retreiveAims() {
+  const forYear = localStorage.getItem("yearString");
   const forMonth = localStorage.getItem("monthString");
   const getAIMSnumber = localStorage.getItem("AIMSnumber");
   // Display saved data
@@ -419,11 +422,11 @@ function retreiveAims(){
   document.getElementById("savedYear").innerText = `${forYear}`;
   document.getElementById("savedMonth").innerText = `${forMonth}`;
   document.getElementById("savedNumber").innerText = `${getAIMSnumber}`;
-  var Var_AIMSnumber = (getAIMSnumber != '') ? getAIMSnumber : '';
+  var Var_AIMSnumber = getAIMSnumber != "" ? getAIMSnumber : "";
   // Set the value of "c" in the hidden input field
-  document.getElementById('AIMSnumber').value = Var_AIMSnumber;
-  
-  if(!forYear || !forMonth || !getAIMSnumber){
+  document.getElementById("AIMSnumber").value = Var_AIMSnumber;
+
+  if (!forYear || !forMonth || !getAIMSnumber) {
     document.getElementById("dataSection").style.display = "none";
   }
 }
@@ -540,7 +543,7 @@ function calculate() {
       }
     });
   });
-  var AdditionalFields = document.getElementsByName('additionalField');
+  var AdditionalFields = document.getElementsByName("additionalField");
   const salary = parseFloat(document.getElementById("salary").value);
   //const fundType = document.getElementById("fundType").value;
   const musisCheckbox = document.getElementById("musisCheckbox");
@@ -565,17 +568,17 @@ function calculate() {
   const inputIjtema = Number(document.getElementById("inputIjtema").value);
 
   // Clear previous results
-let totalAdditionalField = 0;
+  let totalAdditionalField = 0;
 
-// Iterate through each input element and add its value to the total
-//for (const input of AdditionalFields) {
- for (var i = 0; i < AdditionalFields.length; i++) {
-   var value = parseInt(AdditionalFields[i].value);
-   if (!isNaN(value)) {
-     totalAdditionalField += value;
-   }
- }
-//alert(totalAdditionalField);
+  // Iterate through each input element and add its value to the total
+  //for (const input of AdditionalFields) {
+  for (var i = 0; i < AdditionalFields.length; i++) {
+    var value = parseInt(AdditionalFields[i].value);
+    if (!isNaN(value)) {
+      totalAdditionalField += value;
+    }
+  }
+  //alert(totalAdditionalField);
   //All Radio empty
   if (
     !document.getElementById("radioKhuddam").checked &&
@@ -606,9 +609,16 @@ let totalAdditionalField = 0;
       cell1.textContent = "Tehrik-e-Jadid";
       cell2.textContent = parseFloat(InputTehrik);
       cellR1.textContent = "Waqf-e-Jadid";
-      cellR2.textContent = parseFloat(InputWaqf);      
+      cellR2.textContent = parseFloat(InputWaqf);
 
-      const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField;
+      const total =
+        aam +
+        jalsa +
+        khuddam +
+        ijtema +
+        InputTehrik +
+        InputWaqf +
+        totalAdditionalField;
       document.getElementById("aamString").textContent = aamString;
       document.getElementById("aamValue").textContent = aam;
       document.getElementById("jalsaValue").textContent = jalsa;
@@ -625,7 +635,8 @@ let totalAdditionalField = 0;
       cell1.textContent = "Tehrik-e-Jadid";
       cell2.textContent = parseFloat(InputTehrik);
 
-      const total = aam + jalsa + khuddam + ijtema + InputTehrik+ totalAdditionalField;
+      const total =
+        aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
       document.getElementById("aamString").textContent = aamString;
       document.getElementById("aamValue").textContent = aam;
       document.getElementById("jalsaValue").textContent = jalsa;
@@ -641,7 +652,8 @@ let totalAdditionalField = 0;
       const cell2 = newRow.insertCell(1);
       cell1.textContent = "Waqf-e-Jadid";
       cell2.textContent = parseFloat(InputWaqf);
-      const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+      const total =
+        aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
       document.getElementById("aamString").textContent = aamString;
       document.getElementById("aamValue").textContent = aam;
       document.getElementById("jalsaValue").textContent = jalsa;
@@ -671,7 +683,7 @@ let totalAdditionalField = 0;
       (CheckWaqf.checked && isNaN(InputWaqf))
     ) {
       alert("Please ensure that all input fields are filled");
-    } else { 
+    } else {
       const aamString = "Aam";
       const groupString = "Lajna";
       const aam = Math.ceil((6.25 / 100) * salary, 5) + inputAam;
@@ -693,7 +705,15 @@ let totalAdditionalField = 0;
         cell2.textContent = parseFloat(InputTehrik);
         cellR1.textContent = "Waqf-e-Jadid";
         cellR2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField + totalAdditionalField;
+        const total =
+          aam +
+          jalsa +
+          khuddam +
+          ijtema +
+          InputTehrik +
+          InputWaqf +
+          totalAdditionalField +
+          totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -780,7 +800,14 @@ let totalAdditionalField = 0;
         cellR1.textContent = "Waqf-e-Jadid";
         cellR2.textContent = parseFloat(InputWaqf);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField;
+        const total =
+          aam +
+          jalsa +
+          khuddam +
+          ijtema +
+          InputTehrik +
+          InputWaqf +
+          totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -797,7 +824,8 @@ let totalAdditionalField = 0;
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -813,7 +841,8 @@ let totalAdditionalField = 0;
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -867,7 +896,14 @@ let totalAdditionalField = 0;
         cellR1.textContent = "Waqf-e-Jadid";
         cellR2.textContent = parseFloat(InputWaqf);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField;
+        const total =
+          aam +
+          jalsa +
+          khuddam +
+          ijtema +
+          InputTehrik +
+          InputWaqf +
+          totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -884,7 +920,8 @@ let totalAdditionalField = 0;
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -900,7 +937,8 @@ let totalAdditionalField = 0;
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -954,7 +992,14 @@ let totalAdditionalField = 0;
         cellR1.textContent = "Waqf-e-Jadid";
         cellR2.textContent = parseFloat(InputWaqf);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField;
+        const total =
+          aam +
+          jalsa +
+          khuddam +
+          ijtema +
+          InputTehrik +
+          InputWaqf +
+          totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -971,7 +1016,8 @@ let totalAdditionalField = 0;
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -987,7 +1033,8 @@ let totalAdditionalField = 0;
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1041,7 +1088,14 @@ let totalAdditionalField = 0;
         cellR1.textContent = "Waqf-e-Jadid";
         cellR2.textContent = parseFloat(InputWaqf);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField;
+        const total =
+          aam +
+          jalsa +
+          khuddam +
+          ijtema +
+          InputTehrik +
+          InputWaqf +
+          totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1058,7 +1112,8 @@ let totalAdditionalField = 0;
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1074,7 +1129,8 @@ let totalAdditionalField = 0;
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1127,7 +1183,14 @@ let totalAdditionalField = 0;
         cellR1.textContent = "Waqf-e-Jadid";
         cellR2.textContent = parseFloat(InputWaqf);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + InputWaqf + totalAdditionalField;
+        const total =
+          aam +
+          jalsa +
+          khuddam +
+          ijtema +
+          InputTehrik +
+          InputWaqf +
+          totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1144,7 +1207,8 @@ let totalAdditionalField = 0;
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1160,7 +1224,8 @@ let totalAdditionalField = 0;
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total =
+          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
