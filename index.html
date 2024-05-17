@@ -416,7 +416,21 @@ alert(total);
   document.getElementById("totalValue").textContent = total.toFixed(0);*/
 }
 
+function retreiveAims(){
+  const forYear = localStorage.getItem("yearString");
+  const forMonth = localStorage.getItem("monthString");
+  const getAIMSnumber = localStorage.getItem("AIMSnumber");
 
+  // Display saved data
+  document.getElementById("savedYear").textContent = `Year: ${forYear}`;
+  document.getElementById("savedMonth").textContent = `Month: ${forMonth}`;
+  document.getElementById("savedNumber").textContent = `AIMS: ${getAIMSnumber}`;
+  var Var_AIMSnumber = (getAIMSnumber != '') ? getAIMSnumber : '';
+  // Set the value of "c" in the hidden input field
+  document.getElementById('AIMSnumber').value = Var_AIMSnumber;
+}
+retreiveAims();
+      
 function saveData() {
   const year = document.getElementById("year").value;
   const month = document.getElementById("month").value;
