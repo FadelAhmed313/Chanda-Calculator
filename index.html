@@ -339,7 +339,7 @@
 </html>
 
     <script type="text/javascript">/// JavaScript
-   document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const pages = ["home", "about", "Privacy", "Setting", "rate"];
   const defaultPage = "home"; // Set the default page
 
@@ -730,7 +730,7 @@ function calculate() {
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total = aam + jalsa + khuddam + ijtema + InputTehrik;
+        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -746,7 +746,7 @@ function calculate() {
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total = aam + jalsa + khuddam + ijtema + InputWaqf;
+        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -947,7 +947,7 @@ function calculate() {
         document.getElementById("ijtemaValue").textContent = ijtema;
         document.getElementById("totalValue").textContent = total;
       } else {
-        const total = aam + jalsa + khuddam + ijtema;
+        const total = aam + jalsa + khuddam + ijtema + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1112,8 +1112,7 @@ function calculate() {
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total =
-          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1129,8 +1128,7 @@ function calculate() {
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total =
-          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1207,8 +1205,7 @@ function calculate() {
         cell1.textContent = "Tehrik-e-Jadid";
         cell2.textContent = parseFloat(InputTehrik);
 
-        const total =
-          aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
+        const total = aam + jalsa + khuddam + ijtema + InputTehrik + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
@@ -1224,8 +1221,7 @@ function calculate() {
         const cell2 = newRow.insertCell(1);
         cell1.textContent = "Waqf-e-Jadid";
         cell2.textContent = parseFloat(InputWaqf);
-        const total =
-          aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
+        const total = aam + jalsa + khuddam + ijtema + InputWaqf + totalAdditionalField;
         document.getElementById("aamString").textContent = aamString;
         document.getElementById("aamValue").textContent = aam;
         document.getElementById("jalsaValue").textContent = jalsa;
