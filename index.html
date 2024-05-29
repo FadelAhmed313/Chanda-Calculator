@@ -120,28 +120,8 @@
         <br>
         <button style="width: 100%;" type="button" id="btnCalc" onclick="calculate()" class="btn btn-warning">Calculate</button>
       </form>
-      <div id="dataSection">
-        <br />
-
-        <table style="width:55%;">
-          <tr>
-            <td style="text-align: center;font-size: smaller;font-weight: bold;">Year</td>
-            <td style="text-align: center;font-size: smaller;font-weight: bold;">Month</td>
-            <td style="text-align: center;font-size: smaller;font-weight: bold;">Aims</td>
-          </tr>
-          <tr>
-            <td style="text-align: center;font-size: smaller;">
-              <p id="savedYear"></p>
-            </td>
-            <td style="text-align: center;font-size: smaller;">
-              <p id="savedMonth"></p>
-            </td>
-            <td style="text-align: center;font-size: smaller;">
-              <p id="savedNumber"></p>
-            </td>
-          </tr>
-        </table>
-      </div>
+      </br>
+      <div id="table-container"></div>
       <table id="myTable" class="table mt-4">
         <thead>
           <tr>
@@ -269,53 +249,88 @@
         <h2>AIMS</h2>
         <!-- Your Setting page content and form here -->
         <h4 class="text-white"></h4>
-        <form name="myForm" id="myForm" action="javascript:saveData();">
-          <!-- Dropdown menu for Year -->
+  <form name="myForm" id="myForm" action="javascript:saveData();">
+          <!-- Text field for number AIMS-->
           <div class="form-group">
-            <label for="month">Year :</label>
-            <select class="form-control" id="year"></select>
-            <script>
-              // Get the current year
-              const currentYear = new Date().getFullYear();
-              // Create a select element
-              const select = document.getElementById('year');
-              // Add options for the current year and the two previous years
-              for (let i = 0; i < 3; i++) {
-                const option = document.createElement('option');
-                option.value = currentYear - i;
-                option.textContent = currentYear - i;
-                select.appendChild(option);
-              }
-            </script>
-          </div>
-          <!-- Dropdown menu for month -->
-          <div class="form-group">
-            <label for="month">Month:</label>
-            <select class="form-control" id="month" name="month">
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
-              <!-- Add other months here -->
-            </select>
-          </div>
-          <!-- Text field for number -->
-          <div class="form-group">
-            <label for="number">AIMS </label>
-            <input type="number" class="form-control" id="AIMSnumber" name="number" required>
-          </div>
-          <button type="submit" style="width:100%;" class="btn btn btn-warning">Save</button>
-        </form>
+        <label for="inputAddress">Aims Number</label>
+        <input type="number" class="form-control" id="AIMSnumber" name="number" required>
+      </div>
+      <h6>From</h6>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Year</label>
+        <select class="form-control" id="year"></select>
+        <script>
+          // Get the current year
+          const currentYear = new Date().getFullYear();
+          // Create a select element
+          const select = document.getElementById('year');
+          // Add options for the current year and the two previous years
+          for (let i = 0; i < 3; i++) {
+            const option = document.createElement('option');
+            option.value = currentYear - i;
+            option.textContent = currentYear - i;
+            select.appendChild(option);
+          }
+        </script>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Month</label>
+        <select class="form-control" id="month" name="month">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+          <!-- Add other months here -->
+        </select>
+      </div>
+    <h6>To</h6>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Year</label>
+      <select class="form-control" id="toYear"></select>
+      <script>
+        // Get the current year
+        const currentYearTo = new Date().getFullYear();
+        // Create a select element
+        const selectTo = document.getElementById('toYear');
+        // Add options for the current year and the two previous years
+        for (let i = 0; i < 3; i++) {
+          const optionTo = document.createElement('option');
+          optionTo.value = currentYearTo - i;
+          optionTo.textContent = currentYearTo - i;
+          selectTo.appendChild(optionTo);
+        }
+      </script>
+    </div>
+    <div class="form-group col-md-6"> 
+      <label for="inputPassword4">Month</label>
+      <select class="form-control" id="toMonth" name="month">
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option> 
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+        <!-- Add other months here -->
+      </select>
+</br>
+      <button id = "save-button" type="submit" style="width:100%;" class="btn btn btn-warning">Save</button>
+      </form>
         <div class="container mt-4">
-
+ 
           <div id="errorMessages" class="mt-3 text-danger"></div>
           <div id="successMessages" class="mt-3 text-success"></div>
         </div>
@@ -334,9 +349,10 @@
   <div class="container">
     <p><span style="color: #ffc107;">Contact : <span style="color: #ffffff;"><a style="color: #ffffff;" title="Contact " href="mailto:darussalaamoffice@gmail.com" target="_blank">darussalaamoffice@gmail.com</a></span></span></p>
   </div>
-</footer>
+</footer> 
 
 </html>
+
 
     <script type="text/javascript">/// JavaScript
 document.addEventListener("DOMContentLoaded", function () {
@@ -349,7 +365,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     document.getElementById(page).style.display = "block";
   }
-
   // Initial page load
   const initialPage = window.location.hash
     ? window.location.hash.substr(1)
@@ -362,6 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showPage(currentPage);
     document.getElementById("navbar").click();
   });
+  
 });
 
 function resetMessage() {
@@ -413,18 +429,76 @@ alert(total);
   document.getElementById("totalValue").textContent = total.toFixed(0);*/
 }
 
+function generateAimsTable(data) {
+
+  var table = document.createElement('table');
+  var headerRow = table.insertRow();
+  var valueRow = table.insertRow();
+  var rows = table.rows;
+  // Check if 'From' is equal to 'To'
+  var displayTo = data['From'] !== data['To'];
+  
+  // Define your CSS styles for the header here
+  var headerStyles = 'text-align: center;font-size: smaller;font-weight: bold;';
+  var rowStyles = 'text-align: center;font-size: smaller;';
+      table.style.cssText = 'width:55%; border:0px;';
+  // Create header and value rows
+  for (var key in data) {
+    // Change 'From' header to 'Month' if 'From' equals 'To'
+    var headerText = (key === 'From' && !displayTo) ? 'Month' : key;
+    if (data[key] !== '' ) {
+      var headerCell = document.createElement('th');  
+      headerCell.textContent = headerText;;
+      headerCell.style.cssText = headerStyles;
+      headerRow.appendChild(headerCell);
+
+      var valueCell = valueRow.insertCell();
+      valueCell.textContent = data[key];
+      valueCell.style.cssText = rowStyles;
+    }
+  }
+//alert(data['From']);
+  // Append the table to the container
+  if(data['From'] === data['To']){
+    for (var i = 0; i < rows.length; i++) {
+    if(rows[i].cells.length > 1) { // Check if there is more than one cell in the row
+      rows[i].deleteCell(-1); // Delete the last cell
+    }
+  }
+  }
+  document.getElementById('table-container').appendChild(table);
+}
+
 function retreiveAims() {
   const forYear = localStorage.getItem("yearString");
-  const forMonth = localStorage.getItem("monthString");
-  const getAIMSnumber = localStorage.getItem("AIMSnumber");
+  const forMonth = localStorage.getItem("monthString"); 
+  const fortoYear = localStorage.getItem("toYearString"); 
+  const fortoMonth = localStorage.getItem("toMOnthString");
+  const getAIMSnumber = localStorage.getItem("AIMSnumber"); 
+    var data = {
+      'Aims': '3437',
+      'From': forMonth+' '+forYear,
+      'To': fortoMonth+' '+fortoYear // 'To' value is empty
+    };
+  var table = document.querySelector('#table-container table');
+  if (table) {
+  // Remove the table from the DOM
+  table.remove();
+}
+generateAimsTable(data); 
   // Display saved data
+//alert(fortoYear+' - '+fortoMonth);
   //document.getElementById("savedYear").textContent = `Year: ${forYear}`;
-  document.getElementById("savedYear").innerText = `${forYear}`;
-  document.getElementById("savedMonth").innerText = `${forMonth}`;
-  document.getElementById("savedNumber").innerText = `${getAIMSnumber}`;
+ // document.getElementById("savedYear").innerText = `${forYear}`;
+  //document.getElementById("savedMonth").innerText = `${forMonth}`;
+ // document.getElementById("savedNumber").innerText = `${getAIMSnumber}`;
   var Var_AIMSnumber = getAIMSnumber != "" ? getAIMSnumber : "";
   // Set the value of "c" in the hidden input field
   document.getElementById("AIMSnumber").value = Var_AIMSnumber;
+  document.getElementById("year").value = `${forYear}`;
+  document.getElementById("month").value = `${forMonth}`;
+  document.getElementById("toYear").value = `${fortoYear}`;
+  document.getElementById("toMonth").value = `${fortoMonth}`;
 
   if (!forYear || !forMonth || !getAIMSnumber) {
     document.getElementById("dataSection").style.display = "none";
@@ -432,17 +506,44 @@ function retreiveAims() {
 }
 retreiveAims();
 
+function doMonthsCompare(month1, month2) {
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  const index1 = months.indexOf(month1);
+  const index2 = months.indexOf(month2);
+
+  if (index1 === -1 || index2 === -1) {
+    throw new Error('Invalid month name');
+  }
+
+  return index1 > index2;
+}
+
 function saveData() {
   const year = document.getElementById("year").value;
   const month = document.getElementById("month").value;
+  const toYear = document.getElementById("toYear").value;
+  const toMonth = document.getElementById("toMonth").value;
   const AIMSnumber = document.getElementById("AIMSnumber").value;
-
-  // Save data to local storage
-  localStorage.setItem("monthString", month);
-  localStorage.setItem("yearString", year);
-  localStorage.setItem("AIMSnumber", AIMSnumber);
-  retreiveAims();
-  alert("Saved!");
+  if(year > toYear){
+      alert("The 'Year From' field must not exceed the 'Year To' field.");
+  } else if (doMonthsCompare(month, toMonth)){
+      alert("Please ensure that the 'Month From' field is set to a month earlier than the 'Month To' field.");
+  } else {
+      // Save data to local storage
+      localStorage.setItem("monthString", month);
+      localStorage.setItem("yearString", year);  
+      localStorage.setItem("toYearString", toYear);
+      localStorage.setItem("toMOnthString", toMonth);
+      localStorage.setItem("AIMSnumber", AIMSnumber); 
+      retreiveAims();
+      alert("Saved!");
+      document.getElementById('Setting').style.display = "none";
+      document.getElementById('home').style.display = "block";
+  }
 }
 
 // Check if data exists in local storage on page load
