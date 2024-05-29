@@ -354,6 +354,7 @@
 </html>
 
 
+
     <script type="text/javascript">/// JavaScript
 document.addEventListener("DOMContentLoaded", function () {
   const pages = ["home", "about", "Privacy", "Setting", "rate"];
@@ -428,6 +429,7 @@ function updateTotal() {
 alert(total);
   document.getElementById("totalValue").textContent = total.toFixed(0);*/
 }
+// Replace 'itemName' with the key you want to remove
 
 function generateAimsTable(data) {
 
@@ -435,36 +437,41 @@ function generateAimsTable(data) {
   var headerRow = table.insertRow();
   var valueRow = table.insertRow();
   var rows = table.rows;
+  const columnsToDelete = new Set();
   // Check if 'From' is equal to 'To'
-  var displayTo = data['From'] !== data['To'];
+  var displayTo = (data['From'] !== data['To']);
   
   // Define your CSS styles for the header here
   var headerStyles = 'text-align: center;font-size: smaller;font-weight: bold;';
   var rowStyles = 'text-align: center;font-size: smaller;';
-      table.style.cssText = 'width:55%; border:0px;';
+      table.style.cssText = 'width:55%; border:0px;'; 
+  
+  
   // Create header and value rows
   for (var key in data) {
-    // Change 'From' header to 'Month' if 'From' equals 'To'
-    var headerText = (key === 'From' && !displayTo) ? 'Month' : key;
-    if (data[key] !== '' ) {
-      var headerCell = document.createElement('th');  
-      headerCell.textContent = headerText;;
-      headerCell.style.cssText = headerStyles;
-      headerRow.appendChild(headerCell);
+    if (data[key] !== null && !data[key].includes("null") ) {
+      // Change 'From' header to 'Month' if 'From' equals 'To'
+      var headerText = (key === 'From' && !displayTo) ? 'Month' : key;
 
-      var valueCell = valueRow.insertCell();
-      valueCell.textContent = data[key];
-      valueCell.style.cssText = rowStyles;
+        var headerCell = document.createElement('th');  
+        headerCell.textContent = headerText;;
+        headerCell.style.cssText = headerStyles;
+        headerRow.appendChild(headerCell);
+
+        var valueCell = valueRow.insertCell();
+        valueCell.textContent = data[key];
+        valueCell.style.cssText = rowStyles;
+
     }
   }
 //alert(data['From']);
   // Append the table to the container
   if(data['From'] === data['To']){
     for (var i = 0; i < rows.length; i++) {
-    if(rows[i].cells.length > 1) { // Check if there is more than one cell in the row
-      rows[i].deleteCell(-1); // Delete the last cell
+      if(rows[i].cells.length > 1) { // Check if there is more than one cell in the row
+        rows[i].deleteCell(-1); // Delete the last cell
+      }
     }
-  }
   }
   document.getElementById('table-container').appendChild(table);
 }
@@ -473,10 +480,10 @@ function retreiveAims() {
   const forYear = localStorage.getItem("yearString");
   const forMonth = localStorage.getItem("monthString"); 
   const fortoYear = localStorage.getItem("toYearString"); 
-  const fortoMonth = localStorage.getItem("toMOnthString");
+  const fortoMonth = localStorage.getItem("toMonthString");
   const getAIMSnumber = localStorage.getItem("AIMSnumber"); 
     var data = {
-      'Aims': '3437',
+      'Aims': getAIMSnumber,
       'From': forMonth+' '+forYear,
       'To': fortoMonth+' '+fortoYear // 'To' value is empty
     };
@@ -499,10 +506,6 @@ generateAimsTable(data);
   document.getElementById("month").value = `${forMonth}`;
   document.getElementById("toYear").value = `${fortoYear}`;
   document.getElementById("toMonth").value = `${fortoMonth}`;
-
-  if (!forYear || !forMonth || !getAIMSnumber) {
-    document.getElementById("dataSection").style.display = "none";
-  }
 }
 retreiveAims();
 
@@ -516,7 +519,7 @@ function doMonthsCompare(month1, month2) {
   const index2 = months.indexOf(month2);
 
   if (index1 === -1 || index2 === -1) {
-    throw new Error('Invalid month name');
+    alert('Invalid month name');
   }
 
   return index1 > index2;
@@ -532,20 +535,20 @@ function saveData() {
       alert("The 'Year From' field must not exceed the 'Year To' field.");
   } else if (doMonthsCompare(month, toMonth)){
       alert("Please ensure that the 'Month From' field is set to a month earlier than the 'Month To' field.");
-  } else {
-      // Save data to local storage
+  } else if (!year || !month || !toYear || !toMonth ){
+       alert("Please fill in all fields.");
+  }else {
+    // Save data to local storage
       localStorage.setItem("monthString", month);
       localStorage.setItem("yearString", year);  
       localStorage.setItem("toYearString", toYear);
-      localStorage.setItem("toMOnthString", toMonth);
+      localStorage.setItem("toMonthString", toMonth);
       localStorage.setItem("AIMSnumber", AIMSnumber); 
       retreiveAims();
-      alert("Saved!");
-      document.getElementById('Setting').style.display = "none";
-      document.getElementById('home').style.display = "block";
+      alert("Your data has been successfully saved! Now, let’s head back to the home page to calculate your chanda.");
   }
 }
-
+ 
 // Check if data exists in local storage on page load
 /*const storedString = localStorage.getItem("myString");
 const storedNumber = localStorage.getItem("myNumber");
